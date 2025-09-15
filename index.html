@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBU Student Offers</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Homepage Section -->
+    <section id="homepage" class="page active">
+        <!-- Animated gradient background --
+        <div class="gradient-bg"></div>
+        
+        <!-- Main content container -->
+        <div class="container">
+            <!-- Logo with fade-in animation -->
+            <div class="logo-container">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>MBU Student Offers</h1>
+                <p>Your Gateway to Exclusive Student Discounts</p>
+            </div>
+            
+            <!-- Call to action button -->
+            <button class="cta-button" onclick="showAuthPage()">
+                <i class="fas fa-user-plus"></i>
+                Get Started
+            </button>
+            
+            <!-- Features preview -->
+            <div class="features-preview">
+                <div class="feature">
+                    <i class="fas fa-utensils"></i>
+                    <span>20+ Restaurants</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>30+ Grocery Shops</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-coffee"></i>
+                    <span>5+ Tea Shops</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authentication Section (Login/Signup) -->
+    <section id="auth-page" class="page">
+        <div class="auth-container">
+            <!-- Back button -->
+            <button class="back-button" onclick="showHomepage()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            
+            <!-- Auth form container -->
+            <div class="auth-forms">
+                <!-- Login Form -->
+                <div id="login-form" class="auth-form">
+                    <h2>Welcome Back!</h2>
+                    <p>Login to access your offers</p>
+                    
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="login-id">MBU College ID</label>
+                            <input type="text" id="login-id" placeholder="e.g., MBU2024001" required>
+                            <span class="error-message" id="login-id-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" placeholder="Enter your password" required>
+                            <span class="error-message" id="login-password-error"></span>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Login
+                        </button>
+                    </form>
+                    
+                    <p class="switch-form">
+                        Don't have an account? 
+                        <a href="#" onclick="switchToSignup()">Sign up</a>
+                    </p>
+                </div>
+                
+                <!-- Signup Form -->
+                <div id="signup-form" class="auth-form hidden">
+                    <h2>Create Account</h2>
+                    <p>Join MBU Student Offers</p>
+                    
+                    <form onsubmit="handleSignup(event)">
+                        <div class="form-group">
+                            <label for="signup-id">MBU College ID</label>
+                            <input type="text" id="signup-id" placeholder="e.g., MBU2024001" required>
+                            <span class="error-message" id="signup-id-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="signup-name">Full Name</label>
+                            <input type="text" id="signup-name" placeholder="Enter your full name" required>
+                            <span class="error-message" id="signup-name-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="signup-mobile">Mobile Number</label>
+                            <input type="tel" id="signup-mobile" placeholder="e.g., 9876543210" required>
+                            <span class="error-message" id="signup-mobile-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <input type="password" id="signup-password" placeholder="Create a password" required>
+                            <span class="error-message" id="signup-password-error"></span>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">
+                            <i class="fas fa-user-plus"></i>
+                            Sign Up
+                        </button>
+                    </form>
+                    
+                    <p class="switch-form">
+                        Already have an account? 
+                        <a href="#" onclick="switchToLogin()">Login</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="page">
+        <!-- Header with user info and logout -->
+        <header class="dashboard-header">
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span id="user-name">Student</span>
+            </div>
+            <button class="logout-button" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </header>
+        
+        <!-- Main dashboard content -->
+        <div class="dashboard-container">
+            <!-- Welcome message -->
+            <div class="welcome-section">
+                <h2>Welcome to Your Dashboard!</h2>
+                <p>Explore amazing offers exclusively for MBU students</p>
+            </div>
+            
+            <!-- Categories -->
+            <div class="categories">
+                <h3>Categories</h3>
+                <div class="category-cards">
+                    <div class="category-card" onclick="filterOffers('restaurants')">
+                        <i class="fas fa-utensils"></i>
+                        <h4>Restaurants</h4>
+                        <p>20+ Offers</p>
+                    </div>
+                    <div class="category-card" onclick="filterOffers('grocery')">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h4>Grocery Shops</h4>
+                        <p>30+ Offers</p>
+                    </div>
+                    <div class="category-card" onclick="filterOffers('tea')">
+                        <i class="fas fa-coffee"></i>
+                        <h4>Tea Shops</h4>
+                        <p>5+ Offers</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Featured Offers -->
+            <div class="offers-section">
+                <h3>Featured Offers</h3>
+                <div class="offers-grid" id="offers-grid">
+                    <!-- Offers will be dynamically generated -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coupon Modal -->
+    <div id="coupon-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modal-body">
+                <!-- Modal content will be dynamically generated -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
